@@ -2,9 +2,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-//var bodyParser = require('body-parser')
-//import "./DataBase";
-
 /*
 CONEXÃO COM BANCO DE DADOS
 
@@ -19,20 +16,6 @@ const con = mysql.createConnection(
     password : "zyzxyz",
     port     : "3306"
   });
-
-con.connect(function(err) {
-if (err)
-   { 
-    console.error('AWS Database connection failed: ' + err.stack);
-    return
-   }
-else
-   {
-    console.log('Connected to AWS database.');
-    return
-   };
-
-});
 
 const app = express();
 
@@ -66,15 +49,20 @@ app.get("/produto/consultar", (request, response) => {
     //Request -- Entrada
     //Responde -- Saída
 
+    const mysql = require('mysql');
+    const con = mysql.createConnection(
+      { host : "cadastro.cvhcnipsqecs.sa-east-1.rds.amazonaws.com", user : "admin", password : "saladmin00", port : "3306" });
+    con.connect(function(err) {});
+
     con.query(`SELECT * FROM DataBases.cadastro`, function(err, result, fields) {
-            if (err) {
-              //con.end();
-              return response.send(err);
-             }
-            if (result) {
-              //con.end();
-              return response.send(result);
-            }
+      con.end();
+
+      if (err) {
+        return response.send(err);
+        }
+      if (result) {
+        return response.send(result);
+      }
     });
  
 });
@@ -83,13 +71,19 @@ app.post("/produto/incluir", jsonParser, (request, response) => {
     //Request -- Entrada
     //Responde -- Saída
 
+    const mysql = require('mysql');
+    const con = mysql.createConnection(
+      { host : "cadastro.cvhcnipsqecs.sa-east-1.rds.amazonaws.com", user : "admin", password : "saladmin00", port : "3306" });
+    con.connect(function(err) {});
+
     con.query(`INSERT INTO DataBases.cadastro (cdProduto, nmProduto, qtEstoque, qtMinEstoque) VALUES (${request.body.cdProduto}, '${request.body.nmProduto}', ${request.body.qtEstoque} ,${request.body.qtMinEstoque})`, function(err, result, fields) {
+    
+      con.end();
+  
       if (err) {
-         //con.end();
          return response.send(err);
       }
       if (result) {
-        //con.end();
         return response.send(result);
       }
     });
