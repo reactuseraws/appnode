@@ -2,21 +2,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-/*
-CONEXÃO COM BANCO DE DADOS
-
-INICIO
-*/
-
-const mysql = require('mysql');
-
-const con = mysql.createConnection(
-  { host     : "cad.testeaws.sa-east-1.rds.amazonaws.com",
-    user     : "xyz",
-    password : "zyzxyz",
-    port     : "3306"
-  });
-
 const app = express();
 
 var jsonParser = bodyParser.json()
