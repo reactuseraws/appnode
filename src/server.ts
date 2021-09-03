@@ -36,7 +36,7 @@ app.get("/produto/consultar", (request, response) => {
 
     const mysql = require('mysql');
     const con = mysql.createConnection(
-      { host : "cadastro.cvhcnipsqecs.sa-east-1.rds.amazonaws.com", user : "admin", password : "saladmin00", port : "3306" });
+      { host : "cadastro.xyz.sa-east-1.rds.amazonaws.com", user : "admin", password : "xxx", port : "3306" });
     con.connect(function(err) {});
 
     con.query(`SELECT * FROM DataBases.cadastro`, function(err, result, fields) {
@@ -58,7 +58,7 @@ app.post("/produto/incluir", jsonParser, (request, response) => {
 
     const mysql = require('mysql');
     const con = mysql.createConnection(
-      { host : "cadastro.cvhcnipsqecs.sa-east-1.rds.amazonaws.com", user : "admin", password : "saladmin00", port : "3306" });
+      { host : "cadastro.xyz.sa-east-1.rds.amazonaws.com", user : "admin", password : "xxx", port : "3306" });
     con.connect(function(err) {});
 
     con.query(`INSERT INTO DataBases.cadastro (cdProduto, nmProduto, qtEstoque, qtMinEstoque) VALUES (${request.body.cdProduto}, '${request.body.nmProduto}', ${request.body.qtEstoque} ,${request.body.qtMinEstoque})`, function(err, result, fields) {
