@@ -2,9 +2,9 @@
 // const mysql = require('mysql');
 
 // const con = mysql.createConnection({
-// host     : "cadastro.cvhcnipsqecs.sa-east-1.rds.amazonaws.com",
+// host     : "XXX.YYYYYY.sa-east-1.rds.amazonaws.com",
 // user     : "admin",
-// password : "saladmin00",
+// password : "XXXXXX",
 // port     : "3306"
 // });
 
